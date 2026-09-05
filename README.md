@@ -1,13 +1,25 @@
 # Kairos: A Foundation Model for the Language of Slot Play
 
+<p align="center">
+  <a href="https://reslot.dev">reslot.dev</a> ·
+  <a href="https://reslot.dev/kairos">Kairos</a> ·
+  <a href="https://reslot.dev/blog/kairos-a-player-world-model-for-slot-play">Paper</a> ·
+  <a href="https://reslot.dev/blog">Research blog</a> ·
+  <a href="https://reslot.dev/simulator/par-sheet">PAR Sheet simulator</a> ·
+  <a href="https://reslot.dev/simulator/weight-table">Weight Table simulator</a>
+</p>
+
 Kairos is a player world model for slot engines. It treats the round stream a slot engine emits as a language (discrete tokenization, coarse-then-fine autoregression, pretrain-then-finetune, sampled multi-path inference) and learns the one part of that stream that is genuinely uncertain: **the player**, not the RNG.
 
 Each round is written as `[control] → [action] → [outcome]`. Kairos models the action pair conditioned on everything before it; a deterministic engine supplies the outcome under any candidate configuration. Composed together they form a calibrated economy simulator that answers how retention responds to *where and when* giveaway is spent, and a backbone whose embeddings replace hand-written player tags, exit-hazard rules and lifetime-value heuristics.
 
-📄 Paper: [Kairos: A Foundation Model for the Language of Slot Play](https://reslot.dev/blog/kairos-a-player-world-model-for-slot-play)
-📊 Simulation studies: [What the Tables Decide, and What the Players Decide](https://reslot.dev/blog/what-the-tables-decide-and-what-the-players-decide) · [The Population Is the Parameter](https://reslot.dev/blog/the-population-is-the-parameter) · scripts, the v2 behavioural generator and results in [`experiments/`](experiments/)
-🧭 Background: [Loop Engineering for Self-Improving Slot Agents](https://reslot.dev/blog/loop-engineering-for-self-improving-slot-agents)
-🎛 Simulators: [PAR Sheet](https://reslot.dev/simulator/par-sheet) · [Weight Table](https://reslot.dev/simulator/weight-table)
+## Read
+
+- 📄 **Paper** — [Kairos: A Foundation Model for the Language of Slot Play](https://reslot.dev/blog/kairos-a-player-world-model-for-slot-play)
+- 📊 **Simulation studies** — [What the Tables Decide, and What the Players Decide](https://reslot.dev/blog/what-the-tables-decide-and-what-the-players-decide) · [The Population Is the Parameter](https://reslot.dev/blog/the-population-is-the-parameter)
+- 🧪 **Experiments** — scripts, the v2 behavioural generator and results behind both studies, in [`experiments/`](experiments/)
+- 🧭 **Background** — [Loop Engineering for Self-Improving Slot Agents](https://reslot.dev/blog/loop-engineering-for-self-improving-slot-agents)
+- 🎛 **Simulators** — [PAR Sheet](https://reslot.dev/simulator/par-sheet) · [Weight Table](https://reslot.dev/simulator/weight-table), run in the browser, nothing uploaded
 
 > **Status: pre-release.** This repository holds the tokenization pipeline, the synthetic pre-training generator, the model and the evaluation protocol. No production weights are published yet; the model zoo below lists target configurations, not released checkpoints.
 
@@ -251,11 +263,19 @@ Rules that are enforced in code: loss on action tokens only; player-first then t
 }
 ```
 
+---
 
 ## License
 
-MIT for code. Model weights, when released, will carry their own license.
+Code is released under the MIT License. Model weights, when released, will carry their own license. The paper, the simulation studies and the reslot.dev site content are © 2026 reSlot Inc., all rights reserved.
 
 ## Acknowledgements
 
 The control state machine, ledger schema and guardrail layer come from reSlot's dynamic RTP control work; the behavioural generator borrows its mechanisms from the gambling-behaviour literature cited in *The Population Is the Parameter*.
+
+---
+
+<p align="center">
+  © 2026 <a href="https://reslot.dev">reSlot Inc.</a> · Kairos is built by <a href="https://reslot.dev">reSlot</a>, slot math that knows the player.<br>
+  <a href="https://reslot.dev/kairos">Model page</a> · <a href="https://reslot.dev/blog">Blog</a> · <a href="https://reslot.dev/solutions/certified">For certified studios</a> · <a href="https://reslot.dev/solutions/dynamic-control">For dynamic-control studios</a> · <a href="https://reslot.dev/solutions/llm-studios">For studios designing with an LLM</a> · <a href="mailto:mail@reslot.dev">mail@reslot.dev</a>
+</p>
